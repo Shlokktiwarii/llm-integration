@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 from src.schemas.resume import ResumeRequest, ResumeExtraction
+from src.services.extractor import extract_resume
 
 
 app = FastAPI(
@@ -21,18 +22,14 @@ def health_check():
     "/extract",
     response_model=ResumeExtraction,
 )
-def extract_resume(request: ResumeRequest):
+def extract_resume_endpoint(request: ResumeRequest):
 
-    # Temporary stub response
-    return ResumeExtraction(
-        primary_role="backend_developer",
-        experience_level="mid",
-        years_experience=3,
-        skills=[
-            "Python",
-            "FastAPI",
-            "Docker",
-        ],
-        confidence=0.9,
-        needs_review=False,
-    )
+    try:
+        result = extract_resume(request.text)
+        return result
+
+    except ValueError as error:
+        raise HTTPException(
+            status_code=422,
+            detail=str(error),
+        )
