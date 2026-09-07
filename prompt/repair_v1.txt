@@ -1,0 +1,23 @@
+The following LLM response failed validation.
+
+Your task is to repair it so that it becomes valid JSON matching the required schema.
+
+Return ONLY the corrected JSON.
+Do not add explanations.
+Do not add markdown code fences.
+Do not invent information that was not present in the original response.
+
+Required schema:
+
+{
+  "primary_role": "backend_developer | frontend_developer | fullstack_developer | AI_engineer | data_engineer | data_scientist | machine_learning_engineer | devops_engineer | software_engineer | other",
+  "experience_level": "entry | junior | mid | senior | lead | unknown",
+  "years_experience": "number or null",
+  "skills": ["maximum 20 strings"],
+  "confidence": "number between 0.0 and 1.0",
+  "needs_review": "true or false"
+}
+
+Invalid response:
+
+{invalid_response}
