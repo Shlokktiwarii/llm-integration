@@ -49,3 +49,12 @@ class ResumeExtraction(BaseModel):
     )
 
     needs_review: bool
+
+class ExtractionMetadata(BaseModel):
+    latency_seconds: float
+    model: str
+
+
+class ExtractionResponse(BaseModel):
+    data: ResumeExtraction
+    metadata: ExtractionMetadata

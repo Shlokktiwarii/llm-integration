@@ -1,0 +1,47 @@
+[
+  {
+    "id": "resume_001",
+    "input": "Python backend developer with 3 years of experience building APIs using FastAPI, PostgreSQL, Docker and Redis.",
+    "expected": {
+      "primary_role": "backend_developer",
+      "experience_level": "mid",
+      "years_experience": 3
+    }
+  },
+  {
+    "id": "resume_002",
+    "input": "Frontend engineer with 2 years of experience working with React, TypeScript, JavaScript and Next.js.",
+    "expected": {
+      "primary_role": "frontend_developer",
+      "experience_level": "junior",
+      "years_experience": 2
+    }
+  },
+  {
+    "id": "resume_003",
+    "input": "Machine learning engineer specializing in PyTorch, TensorFlow, LLMs and computer vision with 5 years of experience.",
+    "expected": {
+      "primary_role": "machine_learning_engineer",
+      "experience_level": "senior",
+      "years_experience": 5
+    }
+  },
+  {
+    "id": "resume_004",
+    "input": "Recent computer science graduate with internship experience in Python and Django.",
+    "expected": {
+      "primary_role": "backend_developer",
+      "experience_level": "entry",
+      "years_experience": null
+    }
+  },
+  {
+    "id": "resume_005",
+    "input": "DevOps engineer with 7 years of experience in Kubernetes, Terraform, AWS, Docker and CI/CD.",
+    "expected": {
+      "primary_role": "devops_engineer",
+      "experience_level": "senior",
+      "years_experience": 7
+    }
+  }
+]
