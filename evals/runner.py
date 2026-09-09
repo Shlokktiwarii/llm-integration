@@ -73,6 +73,10 @@ def main():
                 f"Failed {case['id']}: {error}"
             )
 
+    # -----------------------------
+    # Individual Results
+    # -----------------------------
+
     print("\n========== EVALUATION RESULTS ==========\n")
 
     for result in results:
@@ -101,6 +105,104 @@ def main():
 
         print()
 
+    # -----------------------------
+    # Aggregate Metrics
+    # -----------------------------
 
+    total_cases = len(results)
+
+    if total_cases == 0:
+        print("No successful evaluation cases.")
+        return
+
+    role_correct_count = sum(
+        result["scores"]["role_correct"]
+        for result in results
+    )
+
+    experience_correct_count = sum(
+        result["scores"]["experience_correct"]
+        for result in results
+    )
+
+    years_correct_count = sum(
+        result["scores"]["years_correct"]
+        for result in results
+    )
+
+    total_latency = sum(
+        result["latency_seconds"]
+        for result in results
+    )
+
+    # Accuracy for each field
+
+    role_accuracy = (
+        role_correct_count / total_cases
+    ) * 100
+
+    experience_accuracy = (
+        experience_correct_count / total_cases
+    ) * 100
+
+    years_accuracy = (
+        years_correct_count / total_cases
+    ) * 100
+
+    # Overall field-level accuracy
+
+    total_correct_fields = (
+        role_correct_count
+        + experience_correct_count
+        + years_correct_count
+    )
+
+    total_fields = total_cases * 3
+
+    overall_accuracy = (
+        total_correct_fields / total_fields
+    ) * 100
+
+    average_latency = (
+        total_latency / total_cases
+    )
+
+    # -----------------------------
+    # Print Summary
+    # -----------------------------
+
+    print("\n========== EVALUATION SUMMARY ==========\n")
+
+    print(f"Total Cases: {total_cases}")
+
+    print(
+        f"Role Accuracy: "
+        f"{role_accuracy:.2f}%"
+    )
+
+    print(
+        f"Experience Accuracy: "
+        f"{experience_accuracy:.2f}%"
+    )
+
+    print(
+        f"Years Accuracy: "
+        f"{years_accuracy:.2f}%"
+    )
+
+    print(
+        f"Overall Field Accuracy: "
+        f"{overall_accuracy:.2f}%"
+    )
+
+    print(
+        f"Average Latency: "
+        f"{average_latency:.2f}s"
+    )
+
+    print("\n========================================")
+
+    
+    
 if __name__ == "__main__":
     main()
